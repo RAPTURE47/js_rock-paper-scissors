@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // Your JavaScript goes here!
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function getComputerChoice(){
+     let a = 100*Math.random();
+     let computerOutput;
+     if(a <= 33){
+        computerOutput = "Rock";
+     }
+     else if(a > 33 && a <= 66){
+        computerOutput = "Paper";
+     }
+     else{
+        computerOutput = "Scissor";
+     }
+
+     return computerOutput;
+
+    }
+    
+    //getComputerChoice();
+
+    function getHumanChoice(){
+      let b = parseInt(prompt("Enter 1 for Rock, 2 for Paper, 3 for Scissor"));
+      let humanOutput;
+
+      switch(b){
+        case 1:
+            humanOutput = "Rock";
+            break;
+        case 2:
+            humanOutput = "Paper";
+            break;
+        case 3:
+            humanOutput = "Scissor";
+            break;
+        default:
+            console.log("Invalid Entry");
+      }
+
+      return humanOutput;
+    }
+
+    //getHumanChoice();
+
+    function playRound(humanChoice,computerChoice){
+        console.log(`Human was : ${humanChoice} and Computer was : ${computerChoice}`);
+        if (humanChoice == "Rock" && computerChoice == "Rock"){
+            console.log("It's a tie");
+        }
+        else if (humanChoice == "Paper" && computerChoice == "Paper"){
+            console.log("It's a tie");
+        }
+        else if(humanChoice == "Scissor" && computerChoice == "Scissor"){
+            console.log("It's a tie");
+        }
+        else if(humanChoice == "Paper" && computerChoice == "Rock"){
+            console.log(`${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+        else if(humanChoice == "Rock" && computerChoice == "Paper"){
+            console.log(`${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        }
+        else if(humanChoice == "Rock" && computerChoice == "Scissor"){
+            console.log(`${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+        else if(humanChoice == "Scissor" && computerChoice == "Rock"){
+            console.log(`${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        }
+        else if(humanChoice == "Paper" && computerChoice == "Scissor"){
+            console.log(`${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        }
+        else if(humanChoice == "Scissor" && computerChoice == "Paper"){
+            console.log(`${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+    }
+
+
+    function playGame(){
+        let i;
+
+        
+        for(i=1;i<6;i++){
+            console.log(`Round ${i}`);
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();  
+            playRound(humanSelection,computerSelection);
+        }
+    }
+
+    playGame();
+
+    console.log(`Final Score,Human:${humanScore},Computer:${computerScore}`);
+    if(humanScore>computerScore){
+        console.log("Human wins");
+    }
+    else if(computerScore>humanScore){
+        console.log("Computer wins");
+    }
+    else{
+        console.log("It's a tie");
+    }
+
+    </script>
+
+</body>
+</html>
